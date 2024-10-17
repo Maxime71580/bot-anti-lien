@@ -45,8 +45,14 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-load_dotenv()
+load_dotenv()  # Charge les variables du fichier .env
 
-token = os.getenv("TOKEN")
+token = os.getenv("TOKEN")  # Récupère le token depuis l'environnement
+
+bot = commands.Bot(command_prefix="!")  # Exemple de bot avec préfixe !
+
+@bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user}")
+
 bot.run(token)
-
