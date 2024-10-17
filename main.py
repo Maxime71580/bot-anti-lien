@@ -1,6 +1,8 @@
 import discord
 import re
 from discord.ext import commands
+from dotenv import load_dotenv
+import os
 
 # Intents requis pour que le bot puisse lire les messages
 intents = discord.Intents.default()
@@ -42,5 +44,9 @@ async def on_message(message):
     # Ne pas oublier de traiter les autres commandes si présentes
     await bot.process_commands(message)
 
-# Démarrage du bot avec le token (remplacez 'YOUR_TOKEN_HERE' par votre token)
-bot.run('MTI4MjkxNTM2ODE4NDMxNTkzNg.GIYhoE.DWyLj2oo9AJcIvB9-wl7ohicJU2UFmjZQ9GG80')
+
+load_dotenv()
+
+token = os.getenv("TOKEN")
+bot.run(token)
+
